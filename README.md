@@ -17,9 +17,9 @@ This sample shows how to build a Python Flask Web-App that uses ADAL Python to o
      - **Name** describes the app to users.
      - Sign-On URL is the base URL of the app. 
   6. After you've completed the registration, Azure AD assigns the app a unique application ID. Copy the value from the app page to use in the next sections.
-  7. From the Settings -> Reply URLs page for your application, update the Reply URL for the application. It is of the format http://localhost:<PORT>/getAToken. The sample App uses PORT 5000 since it is the default port on which Flask web Apps run.
-  8. Generate a key(client secret) from Settings-> Keys page of your application. GENter a key description and duration for the key and click Save. The key value will be displayed. Copy and store the value from the app page to use later for configuration.
-  9. You will also have to grant permissions to access the Microsoft GRaph API by going to Settings-> Required Permissions. Click on Add. Select the API(Sample App uses Micrsoft Graph API) and select the required permissions(Sample App uses sign in and read user profile).
+  7. From the **Settings -> Reply URLs** page for your application, update the Reply URL for the application. It is of the format http://localhost:<PORT>/getAToken. The sample App uses PORT 5000 since it is the default port on which Flask web Apps run.
+  8. Generate a key(client secret) from ** Settings-> Keys** page of your application. GENter a key description and duration for the key and click Save. The key value will be displayed. Copy and store the value from the app page to use later for configuration.
+  9. You will also have to grant permissions to access the Microsoft GRaph API by going to ** Settings-> Required Permissions**. Click on Add. Select the API(Sample App uses Micrsoft Graph API) and select the required permissions(Sample App uses sign in and read user profile).
 
 
 ### Step 2: Download Python(2.7 and above) 
