@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import Response
 from adal import AuthenticationContext
-import urllib.parse
 import flask
 import logging
 import uuid
@@ -18,6 +17,9 @@ SESSION = requests.Session()
 PORT = 5000 # A flask app by default runs on PORT 5000
 AUTHORITY_URL =  config.AUTHORITY_HOST_URL + '/' + config.TENANT
 REDIRECT_URI = 'http://localhost:{}/getAToken'.format(PORT)
+TEMPLATE_AUTHZ_URL = ('https://login.microsoftonline.com/{}/oauth2/authorize?'+
+                      'response_type=code&client_id={}&redirect_uri={}&'+
+                      'state={}&resource={}')
 
 @app.route("/")
 def main():
@@ -31,12 +33,12 @@ def login():
     auth_state = str(uuid.uuid4())
     SESSION.auth_state = auth_state
 
-    params = urllib.parse.urlencode({'response_type': 'code',
-                                     'client_id': config.CLIENT_ID,
-                                     'redirect_uri': REDIRECT_URI,
-                                     'state': auth_state,
-                                     'resource': config.RESOURCE})
-    authorization_url =AUTHORITY_URL + '/oauth2/authorize?' + params
+    authorization_url = TEMPLATE_AUTHZ_URL.format(
+        config.TENANT,
+        config.CLIENT_ID,
+        REDIRECT_URI,
+        auth_state,
+        config.RESOURCE)
     resp = Response(status=307)
     resp.headers['location']= authorization_url
     return resp
@@ -49,7 +51,7 @@ def main_logic():
         raise ValueError("State does not match")
     auth_context = AuthenticationContext(AUTHORITY_URL, api_version=None)
     token_response = auth_context.acquire_token_with_authorization_code(code,REDIRECT_URI,config.RESOURCE, config.CLIENT_ID, config.CLIENT_SECRET)
-    SESSION.headers.update({'Authorization': f"Bearer {token_response['accessToken']}",
+    SESSION.headers.update({'Authorization': "Bearer"+ token_response['accessToken'],
                             'User-Agent': 'adal-python-sample',
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
