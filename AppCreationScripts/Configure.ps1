@@ -208,7 +208,7 @@ Function ConfigureApplications
    # Update config file for 'app'
    $configFile = $pwd.Path + "\..\config.py"
    Write-Host "Updating the sample code ($configFile)"
-   $dictionary = @{ "TENANT" = $tenantName;"CLIENT_SECRET" = $serviceAppKey;"CLIENT_ID" = service.AppId };
+   $dictionary = @{ "TENANT" = $tenantName;"CLIENT_SECRET" = $webAppAppKey;"CLIENT_ID" = $webAppAadApplication.AppId };
    UpdateTextFile -configFilePath $configFile -dictionary $dictionary
    Add-Content -Value "</tbody></table></body></html>" -Path createdApps.html
 

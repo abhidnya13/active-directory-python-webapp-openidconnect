@@ -53,11 +53,11 @@
         },
         {
           "key": "CLIENT_SECRET",
-          "value": "$serviceAppKey"
+          "value": "$webAppAppKey"
         },
         {
           "key": "CLIENT_ID",
-          "value": "service.AppId"
+          "value": "webApp.AppId"
         }
       ]
     }
