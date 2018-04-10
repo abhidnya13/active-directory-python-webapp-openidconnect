@@ -14,6 +14,7 @@
       "Name": "App",
       "IsPublicClient": false,
       "HomePage": "https://localhost:5000/",
+      "ReplyUrls": "https://localhost:5000/getAToken",
       "PasswordCredentials": "Auto", // We'd want password credentals to be generated automatically
       "RequiredResourcesAccess": [
         {

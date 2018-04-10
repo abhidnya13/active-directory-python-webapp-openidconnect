@@ -75,6 +75,7 @@ As a first step you'll need to:
 1. In the succeeding page, Find the *Application ID* value and copy it to the clipboard. You'll need it to configure the Visual Studio configuration file for this project.
 1. Then click on **Settings**, and choose **Properties**.
 1. For the App ID URI, replace the guid in the generated URI 'https://\<your_tenant_name\>/\<guid\>', with the name of your service, for example, 'https://\<your_tenant_name\>/App' (replacing `<your_tenant_name>` with the name of your Azure AD tenant)
+1. rom the **Settings** | **Reply URLs** page for your application, update the Reply URL for the application to be `https://localhost:5000/getAToken`
 1. From the Settings menu, choose **Keys** and add a new entry in the Password section:
 
    - Type a key description (of instance `app secret`),
@@ -95,8 +96,8 @@ Open the solution in Visual Studio to configure the projects
 
 1. Open the `config.py` file
 1. Find the app key `TENANT` and replace the existing value with your AAD tenant name.
-1. Find the app key `CLIENT_SECRET` and replace the existing value with service.AppKey.
-1. Find the app key `CLIENT_ID` and replace the existing value with service.AppId.
+1. Find the app key `CLIENT_SECRET` and replace the existing value with the key you saved during the creation of the `App` app, in the Azure portal.
+1. Find the app key `CLIENT_ID` and replace the existing value with the application ID (clientId) of the `App` application copied from the Azure portal.
 
 ### Step 4: Run the sample
 

@@ -183,6 +183,7 @@ Function ConfigureApplications
    $webAppAppKey = $pw
    $webAppAadApplication = New-AzureADApplication -DisplayName "App" `
                                                   -HomePage "https://localhost:5000/" `
+                                                  -ReplyUrls "https://localhost:5000/getAToken" `
                                                   -IdentifierUris "https://$tenantName/App" `
                                                   -PasswordCredentials $key `
                                                   -PublicClient $False
