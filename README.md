@@ -129,7 +129,7 @@ The acquire_token_with_authorization_code() function requests for an access toke
 token_response = auth_context.acquire_token_with_authorization_code(code,REDIRECT_URI,config.RESOURCE, config.CLIENT_ID, config.CLIENT_SECRET)
 ```
 
-This token is then used to call the Graph API in `@app.route("/graphcall"):
+This token is then used to call the Graph API in `@app.route("/graphcall")`:
 ```Python
 graph_data = SESSION.get(endpoint,headers = http_headers, stream=False).json()
 ```
