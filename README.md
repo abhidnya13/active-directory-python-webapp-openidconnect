@@ -110,13 +110,13 @@ The sample first starts login by redirecting the application from `@app.route("/
 ```Python
 authorization_url = TEMPLATE_AUTHZ_URL.format(
         config.TENANT,
-        config.CLIENT_ID,
+  config.CLIENT_ID,
         REDIRECT_URI,
         auth_state,
         config.RESOURCE)
-resp = Response(status=307)
-resp.headers['location']= authorization_url
-return resp
+    resp = Response(status=307)
+    resp.headers['location']= authorization_url
+    return resp
 ```
 
 After the user logs in, the authorization code is used acquire a token in `@app.route("/getAToken")`.
