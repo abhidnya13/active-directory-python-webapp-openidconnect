@@ -9,7 +9,7 @@ endpoint: AAD V1
 ---
 # Calling Microsoft Graph from a Web App using ADAL Python
 
-![Build badge](https://travis-ci.org/AzureAD/azure-activedirectory-library-for-python/builds/358958147?utm_source=github_status&utm_medium=notification#)
+<!--![Build badge](https://travis-ci.org/AzureAD/azure-activedirectory-library-for-python/builds/358958147?utm_source=github_status&utm_medium=notification#)-->
 
 ## About this sample
 
@@ -110,13 +110,13 @@ The sample first starts login by redirecting the application from `@app.route("/
 ```Python
 authorization_url = TEMPLATE_AUTHZ_URL.format(
         config.TENANT,
-  config.CLIENT_ID,
+        config.CLIENT_ID,
         REDIRECT_URI,
         auth_state,
         config.RESOURCE)
-    resp = Response(status=307)
-    resp.headers['location']= authorization_url
-    return resp
+resp = Response(status=307)
+resp.headers['location']= authorization_url
+return resp
 ```
 
 After the user logs in, the authorization code is used acquire a token in `@app.route("/getAToken")`.
@@ -129,14 +129,14 @@ The acquire_token_with_authorization_code() function requests for an access toke
 token_response = auth_context.acquire_token_with_authorization_code(code,REDIRECT_URI,config.RESOURCE, config.CLIENT_ID, config.CLIENT_SECRET)
 ```
 
-This token is then used to call the Graph API in `@app.route("/graphcall"):
+This token is then used to call the Graph API in `@app.route("/graphcall")`:
 ```Python
 graph_data = SESSION.get(endpoint,headers = http_headers, stream=False).json()
 ```
 
 ## Community Help and Support
 
-Use [Stack Overflow](http://stackoverflow.com/questions/tagged/adal) to get support from the community.
+Use [Stack Overflow](https://stackoverflow.com/questions/tagged/adal+python) to get support from the community.
 Ask your questions on Stack Overflow first and browse existing issues to see if someone has asked your question before.
 Make sure that your questions or comments are tagged with [`adal` `python`].
 
