@@ -2,16 +2,13 @@ from flask import Flask
 from flask import Response
 from adal import AuthenticationContext
 import flask
-import logging
 import uuid
 import requests
 import config
 
-#call this function to turn on logging
-def turn_on_logging():
-    logging.basicConfig(level=logging.DEBUG)
-
 app = Flask(__name__)
+app.debug = True
+app.secret_key = 'development'
 
 SESSION = requests.Session()
 PORT = 5000 # A flask app by default runs on PORT 5000
